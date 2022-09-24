@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # local apps
     'users',
     'products',
+    'drf_yasg'
 ]
 
 SITE = 1
