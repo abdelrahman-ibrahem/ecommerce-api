@@ -47,11 +47,11 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'rest_framework',
     'rest_framework.authtoken',
+    'drf_yasg',
 
     # local apps
     'users',
-    'products',
-    'drf_yasg'
+    'products'
 ]
 
 SITE = 1
