@@ -14,11 +14,18 @@ from permissions.userPermissions import IsOwner
 from rest_framework import status
 from django.conf import settings
 from django.core.mail import send_mail
+from rest_framework.pagination import PageNumberPagination
 
+# add pagination
+class LargeResultsSetPagination(PageNumberPagination):
+    page_size = 1000
+    page_size_query_param = 'page_size'
+    max_page_size = 10000
 
 class ListProducts(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    pagination_class = LargeResultsSetPagination
 
 
 
