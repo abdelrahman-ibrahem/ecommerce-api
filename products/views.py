@@ -15,7 +15,7 @@ from rest_framework import status
 from django.conf import settings
 from django.core.mail import send_mail
 from rest_framework.pagination import PageNumberPagination
-
+from django_filters.rest_framework import DjangoFilterBackend
 # add pagination
 class LargeResultsSetPagination(PageNumberPagination):
     page_size = 1000
@@ -26,6 +26,8 @@ class ListProducts(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     pagination_class = LargeResultsSetPagination
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['name', 'price', 'createdAt']
 
 
 
