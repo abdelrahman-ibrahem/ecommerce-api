@@ -33,6 +33,10 @@ class Product(models.Model):
         self.slug = slugify(self.name)
         super().save(*args, **kwargs)
     
+    class Meta:
+        ordering = ('createdAt',)
+
+    
 
     def __str__(self):
         return self.name # return value in admin page 
@@ -44,7 +48,7 @@ class ProductImage(models.Model):
     image = models.ImageField(upload_to='products/')
 
     def __str__(self):
-        return self.product.nama
+        return self.product.name
 
 STARS = (
     (1, 1),
