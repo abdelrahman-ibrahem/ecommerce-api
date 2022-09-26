@@ -46,11 +46,18 @@ class ProductImage(models.Model):
     def __str__(self):
         return self.product.nama
 
-
+STARS = (
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5),
+)
 
 class Review(models.Model):
     owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    stars = models.IntegerField(choices=STARS) # new 
     review = models.CharField(max_length=255)
 
     def __str__(self):
